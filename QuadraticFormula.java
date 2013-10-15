@@ -1,6 +1,6 @@
 /* Author: Seth Riedel
  * Purpose: Do the quadratic formula really fast
- * Version 1.2 (better handles imaginary answers)
+ * Version 1.3 (fixed error with imaginary answers)
  * Get newest version at http://github.com/brovie96/quadratic-formula
  */
 import java.util.Scanner; //import scanner
@@ -31,8 +31,8 @@ public class QuadraticFormula
       firstAnswer = (-b + discrim)/(2*a);
       secondAnswer = (-b - discrim)/(2*a);
       discrimAginary = Math.sqrt(-(Math.pow(b,2) - 4*a*c));
-      firstAnswerI = (-b + discrimAginary)/(4*a*c);
-      secondAnswerI = (-b - discrimAginary)/(4*a*c);
+      firstAnswerI = (-b + discrimAginary)/(2*a);
+      secondAnswerI = (-b - discrimAginary)/(2*a);
       //print result
       if (firstAnswer == secondAnswer) System.out.printf("The answer is %f.%n",firstAnswer);
       else if (Double.isNaN(firstAnswer))

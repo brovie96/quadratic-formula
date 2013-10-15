@@ -1,6 +1,6 @@
 /* Author: Seth Riedel
  * Purpose: Do the quadratic formula really fast
- * Version 1.0 (with input)
+ * Version 1.1 (with input, partially handles imaginary answers)
  */
 import java.util.Scanner; //import scanner
 public class QuadraticFormula
@@ -28,6 +28,12 @@ public class QuadraticFormula
       secondAnswer = (-b - discrim)/(2*a);
       //print result
       if (firstAnswer == secondAnswer) System.out.printf("The answer is %f.%n",firstAnswer);
+      else if (Double.isNaN(firstAnswer))
+      {
+         if (Double.isNaN(secondAnswer)) System.out.println("There are no real answers.");
+         else System.out.printf("The only real answer is %f.%n",secondAnswer);
+      } //end if
+      else if (Double.isNaN(secondAnswer)) System.out.printf("The only real answer is %f.%n",firstAnswer);
       else System.out.printf("The answers are %f and %f.%n",firstAnswer,secondAnswer);
    } //end main method
 } //end class

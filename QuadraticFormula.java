@@ -1,6 +1,6 @@
 /* Author: Seth Riedel
  * Purpose: Do the quadratic formula really fast
- * Version 1.7 (prettifies UI)
+ * Version 1.8 (prevents returning infinity as an answer)
  * Get newest version at http://github.com/brovie96/quadratic-formula
  */
 import java.util.Scanner; //import scanner
@@ -24,6 +24,13 @@ public class QuadraticFormula
       System.out.println();
       System.out.print("Enter a value for a: ");
       a = input.nextDouble();
+      //reject zero as a value for a
+      while (a == 0)
+      {
+         System.out.println("This program does not solve first-order equations.");
+         System.out.print("Enter a new value for a: ");
+         a = input.nextDouble();
+      } //end while
       System.out.print("Enter a value for b: ");
       b = input.nextDouble();
       System.out.print("Enter a value for c: ");
@@ -40,7 +47,7 @@ public class QuadraticFormula
       if (firstAnswer == secondAnswer) System.out.printf("The answer is %f.%n",firstAnswer);
       else if (Double.isNaN(discrim))
       {
-         System.out.printf("The answers are %f +/- %fi.%n",answerIReal,answerIMaginary);
+         System.out.printf("The answers are %f ± %fi.%n",answerIReal,answerIMaginary);
       } //end if
       else System.out.printf("The answers are %f and %f.%n",firstAnswer,secondAnswer);
    } //end main method

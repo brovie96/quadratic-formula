@@ -1,6 +1,6 @@
 /* Author: Seth Riedel
  * Purpose: Do the quadratic formula really fast
- * Version 1.8 (prevents returning infinity as an answer)
+ * Version 1.8.1 (removes plus-or-minus symbol)
  * Get newest version at http://github.com/brovie96/quadratic-formula
  */
 import java.util.Scanner; //import scanner
@@ -47,7 +47,7 @@ public class QuadraticFormula
       if (firstAnswer == secondAnswer) System.out.printf("The answer is %f.%n",firstAnswer);
       else if (Double.isNaN(discrim))
       {
-         System.out.printf("The answers are %f ± %fi.%n",answerIReal,answerIMaginary);
+         System.out.printf("The answers are %f +/- %fi.%n",answerIReal,answerIMaginary);
       } //end if
       else System.out.printf("The answers are %f and %f.%n",firstAnswer,secondAnswer);
    } //end main method

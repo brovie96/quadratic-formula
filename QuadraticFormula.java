@@ -1,14 +1,14 @@
 /* Author: Seth Riedel
  * Purpose: Do the quadratic formula really fast
- * Version 1.8.1 (removes plus-or-minus symbol)
+ * Version 2.0 (optimizes input, rejects non-numbers)
  * Get newest version at http://github.com/brovie96/quadratic-formula
  */
 import java.util.Scanner; //import scanner
 public class QuadraticFormula
 {
+   static Scanner key = new Scanner(System.in); //create scanner
    public static void main(String[] args)
    {
-      Scanner input = new Scanner(System.in); //create scanner
       //define variables
       double a;
       double b;
@@ -22,19 +22,16 @@ public class QuadraticFormula
       //get input
       System.out.println("This program will solve a quadratic equation ax^2 + bx + c = 0 and give an answer to six decimal places.");
       System.out.println();
-      System.out.print("Enter a value for a: ");
-      a = input.nextDouble();
       //reject zero as a value for a
-      while (a == 0)
+      while (true)
       {
+         a = input("Enter a value for a: ");
+         if (a != 0)
+            break;
          System.out.println("This program does not solve first-order equations.");
-         System.out.print("Enter a new value for a: ");
-         a = input.nextDouble();
       } //end while
-      System.out.print("Enter a value for b: ");
-      b = input.nextDouble();
-      System.out.print("Enter a value for c: ");
-      c = input.nextDouble();
+      b = input("Enter a value for b: ");
+      c = input("Enter a value for c: ");
       //calculations
       discrim = Math.sqrt(Math.pow(b,2) - 4*a*c);
       firstAnswer = (-b + discrim)/(2*a);
@@ -51,4 +48,22 @@ public class QuadraticFormula
       } //end if
       else System.out.printf("The answers are %f and %f.%n",firstAnswer,secondAnswer);
    } //end main method
+   
+   static double input(String prompt)
+   {
+      double x = 0;
+      loop:
+      while(true)
+      {
+         System.out.print(prompt);
+         try {
+            x = key.nextDouble();
+            break loop; //this will only be reached if the input is a double
+         } catch (Exception e) {
+            key.nextLine();
+            System.out.println("Please enter a number.");
+         }
+      } //end
+      return x; 
+   } //end input method
 } //end class
